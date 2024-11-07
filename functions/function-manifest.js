@@ -1,7 +1,7 @@
 // create metadata for all the available functions to pass to completions API
 const tools = [
   {
-    type: 'function',
+   /*  type: 'function',
     function: {
       name: 'checkInventory',
       say: 'Let me check our inventory right now.',
@@ -91,8 +91,7 @@ const tools = [
         }
       }
     },
-  },
-  {
+  }, */
     type: 'function',
     function: {
       name: 'transferCall',
@@ -119,6 +118,44 @@ const tools = [
       }
     },
   },
-];
+  {
+    type: 'function',
+    function: {
+        name: 'book_appointment_in_zoho_bookings',
+        description: 'function to book an appointment with the client.',
+        parameters: {
+          type: 'object',
+          properties: {
+            First_Name: {
+              type: 'string',
+              description: 'First name of the customer'
+            },
+            Last_Name: {
+              type: 'string',
+              description: 'Last name of the customer'
+            },
+            Case_Number: {
+              type: 'string',
+              description: 'Unique identifier for the case'
+            },
+            Appointment_Time: {
+              type: 'string',
+              description: 'Desired time for the appointment in ISO 8601 format'
+            }
+          },
+        },
+      required: ['First_Name', 'Last_Name', 'Case_Number', 'Appointment_Time'],
+      },
+      returns: {
+        type: 'object',
+        properties: {
+          status: {
+            type: 'string',
+            description: 'Whether or not the appointment was successfully booked.'
+          },
+        }
+      }
+      }
+  ];
 
 module.exports = tools;
