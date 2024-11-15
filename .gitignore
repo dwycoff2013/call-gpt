@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
@@ -145,3 +146,9 @@ dist
 fly.toml
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+=======
+.env.yaml
+.env
+node_modules
+dockerfile_python
+>>>>>>> f6d265d (GCP CLoud Run branch init)
