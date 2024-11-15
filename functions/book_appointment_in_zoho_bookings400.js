@@ -1,48 +1,5 @@
-require('dotenv').config();
+/*require('dotenv').config();
 const axios = require('axios');
-<<<<<<< HEAD
-
-const book_appointment_in_zoho_bookings = async function (appointmentData) {
-  try {
-    const { First_Name, Last_Name, Case_Number, Appointment_Time } = appointmentData;
-
-    // Construct the Zoho Bookings API endpoint URL
-    const apiEndpoint = `https://bookings.zoho.com/api/v1/appointments`; 
-
-    // Prepare the request data
-    const requestData = {
-      "customer": {
-        "first_name": First_Name,
-        "last_name": Last_Name,
-      },
-      "start_datetime": Appointment_Time, // Assuming Appointment_Time is in ISO 8601 format
-      "notes": `Case Number: ${Case_Number}` // Add case number to appointment notes
-    };
-
-    // Make the API request to Zoho Bookings
-    const response = await axios.post(apiEndpoint, requestData, {
-      headers: {
-        'Authorization': `Zoho-oauthtoken ${process.env.ZOHO_BOOKINGS_API_TOKEN}`, // Replace with your actual Zoho Bookings API token
-        'Content-Type': 'application/json'
-      }
-    });
-
-    // Handle the response
-    if (response.status === 201) {
-      console.log('Appointment booked successfully:', response.data);
-      return { status: 'success', appointmentId: response.data.data.booking_id }; // Return success status and appointment ID
-    } else {
-      console.error('Error booking appointment:', response.data);
-      return { status: 'failed', error: response.data }; // Return failed status and error details
-    }
-  } catch (error) {
-    console.error('Error booking appointment:', error);
-    return { status: 'failed', error: error.message }; // Return failed status and error message
-  }
-};
-
-module.exports = book_appointment_in_zoho_bookings;
-=======
 const FormData = require('form-data');
 
 // Helper function to format date to 'dd-MMM-yyyy HH:mm:ss'
@@ -68,14 +25,17 @@ const book_appointment_in_zoho_bookings = async function (customerName, customer
     const apiEndpoint = `https://www.zohoapis.com/bookings/v1/json/appointment`;
     const accessToken = process.env.ZOHO_BOOKINGS_ACCESS_TOKEN;
     const refreshToken = process.env.ZOHO_BOOKINGS_REFRESH_TOKEN;
+    const clientId = process.env.ZOHO_CLIENT_ID;
+    const clientSecret = process.env.ZOHO_CLIENT_SECRET;
     const staffId = process.env.ZOHO_BOOKINGS_STAFF_ID;
     const serviceId = process.env.ZOHO_BOOKINGS_SERVICE_ID;
 
-   // Format appointment times
+    // Format appointment times
     const fromTime = formatToZohoDateTime(appointmentTime);
     const toTime = new Date(appointmentTime);
     toTime.setMinutes(toTime.getMinutes() + 30); // Assuming a 30-minute appointment
     const formattedToTime = formatToZohoDateTime(toTime);
+
     // Construct request data using FormData
     const formData = new FormData();
     formData.append('service_id', serviceId);
@@ -88,8 +48,6 @@ const book_appointment_in_zoho_bookings = async function (customerName, customer
       phone_number: customerPhoneNumber
     }));
 
-    console.log("Formatted From Time:", fromTime);
-    console.log("Formatted To Time:", toTime);  
     console.log("Request Data:", formData);
 
     let response;
@@ -115,8 +73,8 @@ const book_appointment_in_zoho_bookings = async function (customerName, customer
           const refreshResponse = await axios.post('https://accounts.zoho.com/oauth/v2/token', null, {
             params: {
               refresh_token: refreshToken,
-              client_id: process.env.ZOHO_CLIENT_ID,
-              client_secret: process.env.ZOHO_CLIENT_SECRET,
+              client_id: clientId,
+              client_secret: clientSecret,
               grant_type: 'refresh_token'
             }
           });
@@ -162,6 +120,7 @@ const book_appointment_in_zoho_bookings = async function (customerName, customer
     return { status: 'failed', error: generalError.message };
   }
 };
-
-module.exports = book_appointment_in_zoho_bookings;
->>>>>>> c46cc77 (repo commit for GCP biuld on Cloud Run)
+module.exports = book_appointment_in_zoho_bookings;*/
+/*curl "https://www.zohoapis.com/crm/v7/Leads?fields=Last_Name,Email,Record_Status__s,Converted__s,Converted_Date_Time&converted=true&per_page=5"
+-X GET
+-H "Authorization: Zoho-oauthtoken 1000.8cb99dxxxxxxxxxxxxx9be93.9b8xxxxxxxxxxxxxxxf" */

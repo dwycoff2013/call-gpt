@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // create metadata for all the available functions to pass to completions API
 const tools = [
   {
@@ -159,3 +160,88 @@ const tools = [
   ];
 
 module.exports = tools;
+=======
+// function-manifest.js
+const tools = [
+    {
+      type: 'function',
+      function: {
+        name: 'transferCall',
+        say: 'One moment while I transfer your call.',
+        description: 'Transfers the customer to a live agent.',
+        parameters: {
+          type: 'object',
+          properties: {
+            callSid: {
+              type: 'string',
+              description: 'The unique identifier for the active phone call.'
+            }
+          },
+          required: ['callSid']
+        },
+        returns: {
+          type: 'object',
+          properties: {
+            status: {
+              type: 'string',
+              description: 'Transfer status (success/failure).'
+            }
+          }
+        }
+      }
+    },
+    {
+      type: 'function',
+      function: {
+        name: 'book_appointment_in_zoho_bookings',
+        say: 'One moment while I book your appointment.',
+        description: 'Books an appointment in Zoho Bookings.',
+        parameters: {
+          type: 'object',
+          properties: {
+            customerName: {
+              type: 'string',
+              description: 'Customer\'s full name.'
+            },
+            customerEmail: {
+              type: 'string',
+              description: 'Customer\'s email address.'
+            },
+            customerPhoneNumber: {
+              type: 'string',
+              description: 'Customer\'s phone number.'
+            },
+            appointmentTime: {
+              type: 'string',
+              description: 'Appointment time (e.g., YYYY-MM-DD HH:mm:ss).'
+            },
+            caseNumber: { // Optional parameter
+              type: 'string',
+              description: 'Case number (if applicable).'
+            }
+          },
+          required: ['customerName', 'customerEmail', 'customerPhoneNumber', 'appointmentTime'] // Removed Case_Number from required
+        },
+        returns: {
+          type: 'object',
+          properties: {
+            status: {
+              type: 'string',
+              description: 'Booking status (success/failure).'
+            },
+            appointmentId: { // Include appointmentId in the return type
+              type: 'string',
+              description: 'The ID of the booked appointment.'
+            },
+            error: { // Include potential error information
+              type: 'string',
+              description: 'Error details if booking failed.'
+            }
+          }
+        }
+      }
+    }
+  ];
+  
+  module.exports = tools;
+>>>>>>> c46cc77 (repo commit for GCP biuld on Cloud Run)
